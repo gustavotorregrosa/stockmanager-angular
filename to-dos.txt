@@ -1,0 +1,33 @@
+Trocar o logo e favicon
+diminuir logo
+Ajustar margens logo
+Melhorar cores (preto?)
+login/logout
+localStorage usuario
+nome do usuario deve aparecer quando logado
+sidenav principal
+    quando nao logado, o botao deve estar condicionado ao tamanho da tela e exibir a sidenav auxiliar
+
+    quando logado, esconda a sidenav auxiliar, esconda o botao auxiliar e, o botao e a sidenav principal
+    deve estar presente, mesmo em tela cheia
+
+cadastro de categorias (com icones?)
+cadastro de produtos (com fotos)
+movimentacoes
+
+fazer o modal de criar categorias
+colocar key nos itens-categorias
+salvar categoria
+
+
+criar sidebar admin com componentes comuns
+na sidebar admin, deixar o menu sempre exposto
+
+criar subrota no "admin" para "categorias"
+
+crud categorias com busca
+
+fixar valores nos campos de login
+
+como as navBar serao diferentes, elas nao vai ter q gerenciar estado (logado/ou nao)
+

@@ -1,0 +1,27 @@
+ip: 192.168.10.10
+memory: 512
+cpus: 1
+provider: virtualbox
+authorize: ~/.ssh/id_rsa.pub
+keys:
+    - ~/.ssh/id_rsa
+folders:
+    -
+        map: /home/gustavo/my-stock-bundle/backend
+        to: /home/vagrant/code
+sites:
+    -
+        map: stock-manager.test
+        to: /home/vagrant/code/public
+databases:
+    - homestead
+features:
+    -
+        mariadb: false
+    -
+        ohmyzsh: false
+    -
+        webdriver: false
+name: backend
+hostname: backend
+version: 7.2.1
