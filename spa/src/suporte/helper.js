@@ -1,1 +1,0 @@
-export const url = 'http://stockmanager.test/api/'
