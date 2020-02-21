@@ -8,16 +8,33 @@ import M from 'materialize-css';
 })
 export class ModalLoginComponent implements OnInit {
 
-  constructor() { }
+  elem:any
+  instance: any
+  loader: boolean = false
 
-  ngOnInit(): void {
-    // setTimeout(() => {
-    //   this.abreModal()
-    // }, 4000)
+  constructor() {
+
   }
 
+  ngOnInit(): void {
+    this.elem = document.getElementById('modal1')
+    this.instance = M.Modal.init(this.elem, {
+      onCloseEnd: () => {
+        this.loader = false
+      }
+    })
+  }
+
+  tryLogin = (e: Event) => {
+    e.preventDefault()
+    this.loader = true
+  }
+
+
   abreModal = () => {
-    M.toast({html: 'Abre modal do login mesmo'})
+    this.instance.open()
+    alert(urlBackend);
+    M.updateTextFields()
   }
 
 }

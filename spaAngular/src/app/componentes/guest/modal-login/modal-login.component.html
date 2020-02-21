@@ -1,1 +1,23 @@
-<p>modal-login works!</p>
+<div>
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="email" type="email" class="validate" />
+                    <label htmlFor="email">E-mail</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="password" type="password" class="validate" />
+                    <label htmlFor="password">Password</label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" (click)="tryLogin($event)" class="waves-effect waves-green btn-flat">Login</a>
+            </div>
+            
+            <div *ngIf="loader" class="progress"><div class="indeterminate"></div></div>
+        </div>
+    </div>
+</div>
