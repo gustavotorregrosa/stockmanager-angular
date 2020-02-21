@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import M from 'materialize-css';
+
 
 @Component({
   selector: 'app-tela-inicial',
@@ -10,6 +12,9 @@ export class TelaInicialComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    setTimeout(() => {
+      console.log(M.toast({html: 'I am a toast!'}))
+    }, 2000)
   }
 
 }
