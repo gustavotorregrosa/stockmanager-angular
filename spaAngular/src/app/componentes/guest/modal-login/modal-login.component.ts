@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-// import {FormsModule} from '@angular/forms';
 import M from 'materialize-css';
 import { AuxiliaresService } from '../../../auxiliares.service';
 
@@ -14,11 +13,9 @@ export class ModalLoginComponent implements OnInit {
   elem:any = null
   instance: any = null
   loader: boolean = false
-  // email: string = ""
-  // senha: string = ""
 
-  @Input() email:string = "guga@gmail.com"
-  @Input() senha:string = "gmail0123"
+  @Input() email:string
+  @Input() senha:string
 
   constructor(private auxiliar:AuxiliaresService) {
 
