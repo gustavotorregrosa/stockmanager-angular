@@ -3,13 +3,13 @@
         <div class="modal-content">
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="email" type="email" class="validate" />
-                    <label htmlFor="email">E-mail</label>
+                    <input [(ngModel)]="email" id="email" type="email" class="validate" />
+                    <label  htmlFor="email">E-mail</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="password" type="password" class="validate" />
+                    <input [(ngModel)]="senha" id="password" type="password" class="validate" />
                     <label htmlFor="password">Password</label>
                 </div>
             </div>

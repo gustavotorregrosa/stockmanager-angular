@@ -8,6 +8,8 @@ import { PainelComponent as PainelCategorias } from './componentes/admin/categor
 import { BarraNavInicialComponent } from './componentes/guest/barra-nav-inicial/barra-nav-inicial.component';
 import { SplashScreenComponent } from './componentes/comuns/splash-screen/splash-screen.component';
 import { ModalLoginComponent } from './componentes/guest/modal-login/modal-login.component';
+import {AuxiliaresService} from './auxiliares.service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,9 +23,10 @@ import { ModalLoginComponent } from './componentes/guest/modal-login/modal-login
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [AuxiliaresService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+// import {FormsModule} from '@angular/forms';
 import M from 'materialize-css';
+import { AuxiliaresService } from '../../../auxiliares.service';
+
 
 @Component({
   selector: 'app-modal-login',
@@ -8,11 +11,16 @@ import M from 'materialize-css';
 })
 export class ModalLoginComponent implements OnInit {
 
-  elem:any
-  instance: any
+  elem:any = null
+  instance: any = null
   loader: boolean = false
+  // email: string = ""
+  // senha: string = ""
 
-  constructor() {
+  @Input() email:string = "guga@gmail.com"
+  @Input() senha:string = "gmail0123"
+
+  constructor(private auxiliar:AuxiliaresService) {
 
   }
 
@@ -28,12 +36,40 @@ export class ModalLoginComponent implements OnInit {
   tryLogin = (e: Event) => {
     e.preventDefault()
     this.loader = true
+    console.log("email: " + this.email)
+    console.log("password: " + this.senha)
+
+    // let myHeaders = new Headers
+    // myHeaders.set("Content-Type", "application/json")
+    // let opcoes = {
+    //     url: this.auxiliar.urlBackend.concat('usuario/login'),
+    //     method: 'post',
+    //     body: JSON.stringify(this.state),
+    //     headers: myHeaders
+    // }
+    // let status
+    // fetch(opcoes.url, opcoes).then(resposta => {
+    //     status = resposta.status
+    //     return resposta.json()
+    // }).then(data => {
+    //     if(status == 200){
+    //         localStorage.setItem("usuario", JSON.stringify(data.usuario))
+    //         localStorage.setItem("jwt", data.jwt)
+    //         this.fechaModal()
+    //         this.props.verificaLoginLocalStorage()
+    //     } 
+        
+    //     M.toast({html: data.mensagem})
+    // })
+
+
+
   }
 
 
   abreModal = () => {
     this.instance.open()
-    alert(urlBackend);
+    // alert(this.auxiliar.urlBackend);
     M.updateTextFields()
   }
 

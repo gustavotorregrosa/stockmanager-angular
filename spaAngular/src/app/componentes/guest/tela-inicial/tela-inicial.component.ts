@@ -12,9 +12,9 @@ export class TelaInicialComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    setTimeout(() => {
-      console.log(M.toast({html: 'I am a toast!'}))
-    }, 2000)
+    // setTimeout(() => {
+    //   console.log(M.toast({html: 'I am a toast!'}))
+    // }, 2000)
   }
 
 }

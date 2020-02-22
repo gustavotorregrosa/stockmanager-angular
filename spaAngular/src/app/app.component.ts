@@ -7,5 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'spaAngular';
-  // urlBackend = 'http://stockmanager-backend.local/api/';
 }
