@@ -1,18 +1,18 @@
 <div>
-    <form action="" method="post">
+    <form *ngIf="usuario.logado" action="" method="post">
         <div>
             <p>Nome</p>
-            <p>{{nome}}</p>
+            <p>{{usuario.nome}}</p>
         </div>
         <br>
         <div>
             <p>Email</p>
-            <p>{{email}}</p>
+            <p>{{usuario.email}}</p>
         </div>
         <br>
         <div>
             <p>JWT</p>
-            <p>{{jwt}}</p>
+            <p>{{usuario.jwt}}</p>
         </div>
         <br>
 

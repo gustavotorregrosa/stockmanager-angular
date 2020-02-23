@@ -3,21 +3,23 @@ import { Usuario } from '../models/usuario.model';
 import * as AutenticacaoAction from '../actions/autenticacao.actions';
 
 const estadoInicial: Usuario = {
-    logado: true,
-    nome: "gustavo torregrosa costa",
-    email: "gugatcost@hotmail.com",
-    jwt: "123456789"
+    logado: false,
+    nome: null,
+    email: null,
+    jwt: null
 }
 
 export function reducer(estado: Usuario = estadoInicial, action: AutenticacaoAction.Actions){
     switch(action.type){
-        case AutenticacaoAction.LOG_USER:
-            
-            return {
+        case AutenticacaoAction.LOG_USER: 
+            let regLogin = {
                 logado: true,
                 ...action.payload
             }
+            localStorage.setItem('usuario', JSON.stringify(regLogin))
+            return regLogin
         case AutenticacaoAction.LOGOUT:
+            localStorage.clear()
             return {
                 logado: false,
                 nome: null,
@@ -25,10 +27,12 @@ export function reducer(estado: Usuario = estadoInicial, action: AutenticacaoAct
                 jwt: null
             }
         case AutenticacaoAction.ATUALIZA_TOKEN:
-            return {
-                ...estado,
-                jwt: action.payload
+            let regAtualiza = {
+                logado: true,
+                ...action.payload
             }
+            localStorage.setItem('usuario', JSON.stringify(regAtualiza))
+            return regAtualiza
         default:
             return estado
         

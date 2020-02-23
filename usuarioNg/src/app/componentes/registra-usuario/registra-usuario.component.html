@@ -2,20 +2,20 @@
     <form action="" method="post">
         <div>
             <p>Nome</p>
-            <input type="text">
+            <input [(ngModel)]="nome" name="nome" type="text">
         </div>
         <br>
         <div>
             <p>Email</p>
-            <input type="email">
+            <input [(ngModel)]="email" name="email" type="email">
         </div>
         <br>
         <div>
             <p>JWT</p>
-            <input type="text">
+            <input [(ngModel)]="jwt" name="jwt" type="text">
         </div>
         <br>
-        <button>Salvar</button>
+        <button (click)="registraUsuario($event)">Salvar</button>
        
 
 

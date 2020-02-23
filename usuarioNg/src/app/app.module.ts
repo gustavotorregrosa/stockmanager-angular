@@ -9,6 +9,7 @@ import { LeUsuarioComponent } from './componentes/le-usuario/le-usuario.componen
 import { StoreModule } from '@ngrx/store';
 // import { reducers, metaReducers } from './reducers';
 import { reducer } from './reducers/autenticacao.reducer';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { reducer } from './reducers/autenticacao.reducer';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     // StoreModule.forRoot(reducers, {
     //   metaReducers,
     //   runtimeChecks: {

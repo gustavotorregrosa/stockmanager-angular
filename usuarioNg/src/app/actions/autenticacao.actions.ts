@@ -8,7 +8,11 @@ export const ATUALIZA_TOKEN = '[USUARIO] Atualiza token'
 
 export class LogarUsuario implements Action {
     readonly type: string = LOG_USER
-    constructor(public payload: Usuario){}
+    constructor(public payload: Usuario){
+        // console.log("alterou registro")
+        // console.log(payload)
+    
+    }
 }
 
 export class AtualizaToken implements Action {
