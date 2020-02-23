@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
       if(usuarioStorage){
         let usuarioObj:Usuario = JSON.parse(usuarioStorage)
         this._registraUsuario(usuarioObj)
-        console.log("registrou....")
+
 
       }
   }

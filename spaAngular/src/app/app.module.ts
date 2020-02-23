@@ -10,6 +10,9 @@ import { SplashScreenComponent } from './componentes/comuns/splash-screen/splash
 import { ModalLoginComponent } from './componentes/guest/modal-login/modal-login.component';
 import {AuxiliaresService} from './auxiliares.service';
 import { FormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
+import { reducer } from './reducers/autenticacao.reducer';
+import { ExibeUsuarioComponent } from './componentes/comuns/exibe-usuario/exibe-usuario.component';
 
 @NgModule({
   declarations: [
@@ -19,12 +22,16 @@ import { FormsModule } from '@angular/forms';
     PainelCategorias,
     BarraNavInicialComponent,
     SplashScreenComponent,
-    ModalLoginComponent
+    ModalLoginComponent,
+    ExibeUsuarioComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    StoreModule.forRoot({
+      autenticacao: reducer
+    })
   ],
   providers: [AuxiliaresService],
   bootstrap: [AppComponent]
