@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import { AppState } from './app.state';
 import { Usuario } from './models/usuario.model';
-import * as UsuarioActions from './actions/autenticacao.actions'; 
+import * as UsuarioActions from './actions/autenticacao.actions';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -12,18 +14,55 @@ import * as UsuarioActions from './actions/autenticacao.actions';
 export class AppComponent implements OnInit {
   title = 'spaAngular';
 
-  constructor(private store: Store<AppState>) { }
+  usuario: any
+  @Input() autenticacao: Observable<Usuario>
+
+  constructor(private store: Store<AppState>, private router: Router) {
+    this.autenticacao = store.select('autenticacao')
+    this.autenticacao.subscribe((u: any) => {
+      this.usuario = { ...u }
+      if (this.usuario.logado) {
+        this.router.navigateByUrl("/admin")
+      }else{
+        this.router.navigateByUrl("/")
+      }
+    })
+  }
 
   _registraUsuario = (u: Usuario) => {
     this.store.dispatch(new UsuarioActions.LogarUsuario(u))
   }
 
+  _logout = () => {
+    this.store.dispatch(new UsuarioActions.FazerLogout())
+  }
+
   ngOnInit(): void {
-      let usuarioStorage:string = localStorage.getItem('usuario') ? localStorage.getItem('usuario') : null
-      if(usuarioStorage){
-        let usuarioObj:Usuario = JSON.parse(usuarioStorage)
-        this._registraUsuario(usuarioObj)
-      }
+    let usuarioStorage:string = localStorage.getItem('usuario') ? localStorage.getItem('usuario') : null
+    if(usuarioStorage){
+      let usuarioObj:Usuario = JSON.parse(usuarioStorage)
+      this._registraUsuario(usuarioObj)
+    }
+
+    // setTimeout(() => {
+    //   this._logout()
+    // }, 5000)
+
+    // setTimeout(() => {
+    //   // console.log(this.usuario)
+
+    //   let usuarioStorage: string = localStorage.getItem('usuario') ? localStorage.getItem('usuario') : null
+    //   if (usuarioStorage) {
+    //     let usuarioObj: Usuario = JSON.parse(usuarioStorage)
+    //     this._registraUsuario(usuarioObj)
+
+    //   }
+
+    // }, 4000)
+
+    // setTimeout(() => {
+    //   this.router.navigateByUrl("/admin")
+    // }, 3000)
   }
 
 }
