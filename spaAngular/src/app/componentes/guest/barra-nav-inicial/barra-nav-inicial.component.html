@@ -4,16 +4,15 @@
             <a href="#" class="brand-logo">Stock Management</a>
             <a href="#" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a routerLink="/admin" routerLinkActive="active">Admin</a></li>
-                <li><a href="#">Registrar</a></li>
-                <li><a href="#" (click)="abreModal($event)">Login</a></li>
+              <li><a (click)="abreModalRegistro($event)" href="#">Registrar</a></li>
+                <li><a href="#" (click)="abreModalLogin($event)">Login</a></li>
             </ul>
         </div>
     </nav>
     <ul class="sidenav" id="minhasidenav">
         <li><a routerLink="/admin" routerLinkActive="active">Admin</a></li>
-        <li><a href="#">Registrar</a></li>
-        <li><a href="#">Login</a></li>
+        <li><a (click)="abreModalRegistro($event)" href="#">Registrar</a></li>
+        <li><a (click)="abreModalLogin($event)" href="#">Login</a></li>
         <br />
         <br />
         <br />
@@ -26,3 +25,4 @@
 </div>
 
 <app-modal-login></app-modal-login>
+<app-modal-registro></app-modal-registro>

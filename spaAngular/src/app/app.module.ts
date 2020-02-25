@@ -13,6 +13,11 @@ import { FormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { reducer } from './reducers/autenticacao.reducer';
 import { ExibeUsuarioComponent } from './componentes/comuns/exibe-usuario/exibe-usuario.component';
+import { BarraNavegacaoAdminComponent } from './componentes/admin/barra-navegacao-admin/barra-navegacao-admin.component';
+import { ModalLogoutComponent } from './componentes/admin/modal-logout/modal-logout.component';
+import { ModalRegistroComponent } from './componentes/guest/modal-registro/modal-registro.component';
+
+
 
 @NgModule({
   declarations: [
@@ -23,7 +28,10 @@ import { ExibeUsuarioComponent } from './componentes/comuns/exibe-usuario/exibe-
     BarraNavInicialComponent,
     SplashScreenComponent,
     ModalLoginComponent,
-    ExibeUsuarioComponent
+    ExibeUsuarioComponent,
+    BarraNavegacaoAdminComponent,
+    ModalLogoutComponent,
+    ModalRegistroComponent,
   ],
   imports: [
     BrowserModule,

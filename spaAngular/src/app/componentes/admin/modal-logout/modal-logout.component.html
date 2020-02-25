@@ -1,0 +1,14 @@
+<div>
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <div class="row">
+                <p>Deseja efetuar o logout {{usuario.nome}}?</p>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" (click)="logout($event)" class="waves-effect waves-green btn-flat">Logout</a>
+            </div>
+            <div *ngIf="loader" class="progress"><div class="indeterminate"></div></div>
+        </div>
+
+    </div>
+</div>

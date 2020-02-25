@@ -74,9 +74,6 @@ export class ModalLoginComponent implements OnInit {
         
         M.toast({html: data.mensagem})
     })
-
-
-
   }
 
 

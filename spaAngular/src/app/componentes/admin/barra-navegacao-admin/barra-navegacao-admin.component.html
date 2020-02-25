@@ -1,0 +1,38 @@
+<div>
+    <nav class="black">
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo">Stock Management</a>
+            <a href="#" class="sidenav-trigger show-on-large"><i
+                   (click)="abrirMenu($event)" class="material-icons">menu</i></a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a (click)="abrirModalLogout($event)" href="#">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+    <ul class="sidenav" id="minhasidenav">
+       
+            <li>
+                <a routerLink="/admin/categorias" (click)="fecharMenu($event)" routerLinkActive="ativa">Categorias</a>
+            </li>
+
+            <li>
+                <a routerLink="/admin/produtos" (click)="fecharMenu($event)" routerLinkActive="ativa">Produtos</a>
+            </li>
+      
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <li>
+            <div class="divider"></div>
+        </li>
+        <li><a href="#">Logout</a></li>
+        <li><a href="#">Fechar</a></li>
+    </ul>
+   
+</div>
+
+<app-modal-logout></app-modal-logout>
+

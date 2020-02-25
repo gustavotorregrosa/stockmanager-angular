@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ModalLoginComponent as LoginModal } from '../modal-login/modal-login.component';
+import {ModalRegistroComponent as RegistroModal} from '../modal-registro/modal-registro.component';
 
 @Component({
   selector: 'app-barra-nav-inicial',
@@ -8,14 +9,21 @@ import { ModalLoginComponent as LoginModal } from '../modal-login/modal-login.co
 })
 export class BarraNavInicialComponent implements OnInit {
   @ViewChild(LoginModal) loginModal: LoginModal;
+  @ViewChild(RegistroModal) registroModal: RegistroModal;
+
   constructor() { }
 
   ngOnInit(): void {
 
   }
 
-  abreModal = (e: Event) => {
+  abreModalLogin = (e: Event) => {
     e.preventDefault()
     this.loginModal.abreModal()
+  }
+
+  abreModalRegistro = (e: Event) => {
+    e.preventDefault()
+    this.registroModal.abreModal()
   }
 }
