@@ -28,7 +28,6 @@
               "src/styles.css"
             ],
             "scripts": [
-             
               "node_modules/jquery/dist/jquery.js",
               "node_modules/hammerjs/hammer.js",
               "node_modules/materialize-css/dist/js/materialize.js"
@@ -127,5 +126,8 @@
       }
     }
   },
-  "defaultProject": "spaAngular"
+  "defaultProject": "spaAngular",
+  "cli": {
+    "analytics": "e41dca02-18c4-42b7-87bc-ff2c0b2091c7"
+  }
 }

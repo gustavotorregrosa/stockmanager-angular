@@ -15,6 +15,8 @@ export class BarraBuscaComponent implements OnInit {
     return this.textoBusca.length > 0
   }
 
+ 
+
   ngOnInit(): void {
     
   }

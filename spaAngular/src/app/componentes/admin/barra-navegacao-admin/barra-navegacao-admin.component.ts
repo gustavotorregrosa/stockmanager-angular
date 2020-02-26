@@ -13,8 +13,6 @@ export class BarraNavegacaoAdminComponent implements OnInit {
 
   constructor() { }
 
-  
-
   elem = null
   instancia = null
 
