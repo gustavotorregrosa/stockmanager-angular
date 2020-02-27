@@ -10,24 +10,47 @@ export class PaginacaoComponent implements OnInit {
   constructor() { }
 
   @Input() qtdePaginas: number
+  @Input() paginaAtiva: number
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
 
-    // setInterval(() => {
-    //   console.log(this.qtdePaginas)
-    // }, 1000)
 
-    console.log("as paginas sao...")
-    console.log(this.paginas())
+  selecionaPagina = (p, e: Event) => {
+    e.preventDefault()
+    this.paginaAtiva = p
   }
 
+  habilitaPrimeiro = () => this.paginaAtiva > 1 
+
+  habilitaUltimo = () => this.paginaAtiva < this.qtdePaginas
+  
+  decrementaPagina = (e: Event) => {
+    e.preventDefault()
+    if(this.paginaAtiva == 1){
+      return false
+    }
+    this.paginaAtiva--
+  }
+
+  incrementaPagina = (e: Event) => {
+    e.preventDefault()
+    if(this.paginaAtiva >= this.qtdePaginas){
+      return false
+    }
+    this.paginaAtiva++
+  }
 
   paginas = () => {
     let paginasArray: Array<any> = []
-    for (let index = 0; index < this.qtdePaginas; index++) {
+
+    for (let index = 1; index <= this.qtdePaginas; index++) {
+        let classe = "waves-effect"
+        if(index == this.paginaAtiva){
+          classe = "active"
+        }
         paginasArray.push({
           pagina: index,
-          classe: "waves-effect"
+          classe
         })
     }
 
