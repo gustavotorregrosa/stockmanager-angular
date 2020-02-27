@@ -6,7 +6,7 @@ import M from 'materialize-css';
 })
 export class AuxiliaresService {
 
-  urlBackend:string = 'http://stockmanager-angular.test/api/';
+  urlBackend:string = 'http://stockmanager-backend.local/api/';
 
   minhaFuncaoTeste = () => {
     alert("ola mundo 123")

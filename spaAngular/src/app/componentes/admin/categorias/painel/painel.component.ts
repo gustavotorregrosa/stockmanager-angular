@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Output } from '@angular/core';
 import {BarraBuscaComponent as BarraBusca} from '../../barra-busca/barra-busca.component';
 
 @Component({
@@ -8,13 +8,15 @@ import {BarraBuscaComponent as BarraBusca} from '../../barra-busca/barra-busca.c
 })
 export class PainelComponent implements OnInit {
   @ViewChild(BarraBusca) barraBusca: BarraBusca;
+  @Output() qtdePaginas: number = 10
 
   constructor() { }
 
   ngOnInit(): void {
     // setInterval(() => {
-    //   console.log("ola mundo...")
-    //   console.log(this.barraBusca.textoBusca)
+    //   // console.log("ola mundo...")
+    //   // console.log(this.barraBusca.textoBusca)
+    //   this.qtdePaginas++
     // }, 1000)
   }
   
