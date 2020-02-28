@@ -18,6 +18,7 @@ import { ModalLogoutComponent } from './componentes/admin/modal-logout/modal-log
 import { ModalRegistroComponent } from './componentes/guest/modal-registro/modal-registro.component';
 import { BarraBuscaComponent } from './componentes/admin/barra-busca/barra-busca.component';
 import { PaginacaoComponent } from './componentes/admin/paginacao/paginacao.component';
+import { TabelaComponent } from './componentes/admin/categorias/tabela/tabela.component';
 
 
 
@@ -36,6 +37,7 @@ import { PaginacaoComponent } from './componentes/admin/paginacao/paginacao.comp
     ModalRegistroComponent,
     BarraBuscaComponent,
     PaginacaoComponent,
+    TabelaComponent,
   ],
   imports: [
     BrowserModule,

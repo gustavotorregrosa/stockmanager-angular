@@ -31,7 +31,6 @@ class TabelaCategorias extends Component {
         this.props.deletar(el)
     }
 
-
     render() {
         return (
             <div>

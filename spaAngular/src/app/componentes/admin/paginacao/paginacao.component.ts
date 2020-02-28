@@ -9,7 +9,7 @@ export class PaginacaoComponent implements OnInit {
 
   constructor() { }
 
-  @Input() qtdePaginas: number
+  @Input() qtdePaginas: number = 9
   public paginaAtiva: number = 5
 
   ngOnInit(): void {}

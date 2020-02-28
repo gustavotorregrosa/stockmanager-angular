@@ -1,22 +1,33 @@
 import { Injectable } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import M from 'materialize-css';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { AppState } from './app.state';
+import { Usuario } from './models/usuario.model';
+import * as UsuarioActions from './actions/autenticacao.actions';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuxiliaresService {
+  @Input() autenticacao: Observable<Usuario>
+  public usuario: Usuario
 
   urlBackend:string = 'http://stockmanager-angular.test/api/';
 
-  minhaFuncaoTeste = () => {
-    alert("ola mundo 123")
-  }
 
 
+constructor(private store: Store<AppState>){ 
+  this.autenticacao = store.select('autenticacao')
+    this.autenticacao.subscribe((u: any) => {
+      this.usuario = { ...u }
+    })
+}
 
 getJwt = () => {
-  // const jwt = store.getState().autenticacao.jwt
-  const jwt = "123"
+  // const jwt = this.store.getState().autenticacao.jwt
+  const jwt = this.usuario.jwt
   return jwt
 }
 
@@ -81,12 +92,12 @@ jwtFetch = (url, opcoes = null) => {
               M.toast({ html: "Voce sera redirecionado para um novo login" })
               localStorage.clear()
               setTimeout(() => {
-                  // store.dispatch(verificaLoginLS())
+                this.store.dispatch(new UsuarioActions.FazerLogout())
                   setTimeout(() => {
                       const e = new CustomEvent('abreLogin')
                       document.dispatchEvent(e)
 
-                  }, 1000)
+                  }, 2000)
               }, 500)
           }
           else if (status < 200 || status > 299) {

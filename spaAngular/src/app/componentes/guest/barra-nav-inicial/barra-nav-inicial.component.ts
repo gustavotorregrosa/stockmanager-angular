@@ -14,6 +14,9 @@ export class BarraNavInicialComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    document.addEventListener('abreLogin', (e) => {
+      this.abreModalLogin(e)
+    })
 
   }
 
