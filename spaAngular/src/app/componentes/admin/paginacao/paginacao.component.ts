@@ -10,7 +10,7 @@ export class PaginacaoComponent implements OnInit {
   constructor() { }
 
   @Input() qtdePaginas: number
-  @Input() paginaAtiva: number
+  public paginaAtiva: number = 5
 
   ngOnInit(): void {}
 
@@ -26,7 +26,7 @@ export class PaginacaoComponent implements OnInit {
   
   decrementaPagina = (e: Event) => {
     e.preventDefault()
-    if(this.paginaAtiva == 1){
+    if(this.paginaAtiva <= 1){
       return false
     }
     this.paginaAtiva--
