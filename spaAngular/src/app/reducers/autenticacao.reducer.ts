@@ -29,7 +29,7 @@ export function reducer(estado: Usuario = estadoInicial, action: AutenticacaoAct
         case AutenticacaoAction.ATUALIZA_TOKEN:
             let regAtualiza = {
                 logado: true,
-                ...action.payload
+                jwt: action.payload
             }
             localStorage.setItem('usuario', JSON.stringify(regAtualiza))
             return regAtualiza

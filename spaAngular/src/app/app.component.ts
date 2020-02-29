@@ -22,7 +22,11 @@ export class AppComponent implements OnInit {
     this.autenticacao.subscribe((u: any) => {
       this.usuario = { ...u }
       if (this.usuario.logado) {
-        this.router.navigateByUrl("/admin")
+        let arrayRotas = this.router.url.split("/")
+        console.log(arrayRotas)
+        if(arrayRotas[1] != "admin"){
+          this.router.navigateByUrl("/admin")
+        }
       }else{
         this.router.navigateByUrl("/")
       }
