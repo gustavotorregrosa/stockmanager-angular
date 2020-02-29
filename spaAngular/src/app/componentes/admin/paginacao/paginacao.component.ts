@@ -9,8 +9,8 @@ export class PaginacaoComponent implements OnInit {
 
   constructor() { }
 
-  @Input() qtdePaginas: number = 9
-  public paginaAtiva: number = 5
+  public qtdePaginas: number
+  public paginaAtiva: number = 1
 
   ngOnInit(): void {}
 
@@ -19,6 +19,13 @@ export class PaginacaoComponent implements OnInit {
     e.preventDefault()
     this.paginaAtiva = p
   }
+
+  reset = () => {
+    this.paginaAtiva = 1
+    this.qtdePaginas = 1
+  }
+
+  exibeBarra = () => this.qtdePaginas > 1
 
   habilitaPrimeiro = () => this.paginaAtiva > 1 
 

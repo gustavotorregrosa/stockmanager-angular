@@ -20,14 +20,15 @@
        
         <div class="row">
             <div class="col s5 offset-s7">
-                <app-paginacao ngDefaultControl [qtdePaginas]="qtdePaginas"></app-paginacao>    
+                <app-paginacao ngDefaultControl></app-paginacao>    
             </div>
         </div>
 
         <br><br>
 
         <div class="row">
-            <app-tabela-categoria [listaCategorias]="listaCategorias()" ></app-tabela-categoria>
+            <app-tabela-categoria *ngIf="!loader" [listaCategorias]="listaCategorias()" ></app-tabela-categoria>
+            <div *ngIf="loader" class="progress"><div class="indeterminate"></div></div>
         </div>
         
 
