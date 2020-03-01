@@ -10,24 +10,41 @@ import { AuxiliaresService } from '../../../../auxiliares.service';
 })
 export class PainelComponent implements OnInit {
   @ViewChild(BarraBusca) barraBusca: BarraBusca;
-  @ViewChild(Paginacao) barraPaginacao: Paginacao;
-  
+
+  // public qtdePaginas: number = 1
+  public paginaAtiva: number = 1
 
   todasCategorias: any = []
 
+
   public loader: boolean = true
-  itensPorPagina: number = 3
+  public itensPorPagina: number = 5
 
   constructor(private auxiliar: AuxiliaresService) { }
 
   getTodasCategorias = () => {
     this.loader = true
-    this.barraPaginacao.reset()
     this.auxiliar.jwtFetch("categorias/listar").then((categorias: any) => {
       this.todasCategorias = categorias
       this.loader = false
-      this.barraPaginacao.qtdePaginas = Math.ceil(categorias.length / this.itensPorPagina)
+      this.resetBarraPaginacao()
+      // this.qtdePaginas() = Math.ceil(categorias.length / this.itensPorPagina)
     })
+  }
+
+  qtdePaginas = () => {
+
+    let numCat = this.listaCategoriasFiltroBusca().length
+    if(numCat){
+      return Math.ceil(numCat / this.itensPorPagina)
+    }
+    return 1
+
+  }
+
+  resetBarraPaginacao = () => {
+    // this.qtdePaginas = 1
+    this.paginaAtiva = 1
   }
 
   ngOnInit(): void {
@@ -35,51 +52,41 @@ export class PainelComponent implements OnInit {
       this.getTodasCategorias()
     }, 2000)
 
+    // setInterval(() => {
+    //   console.log("quantidade pagina")
+    //   console.log( this.qtdePaginas)
+    // }, 1000)
   }
 
-  listaCategoriasFiltroBusca = (listagem: any) => {
-    try{
-      let textoBusca = this.barraBusca.textoBusca
-      if (textoBusca.length > 0) {
-        return listagem.filter(c => c.nome.toLowerCase().includes(textoBusca.toLowerCase()))
-      }
-      return listagem
-    } catch(e){
-      return listagem
+  listaCategoriasFiltroBusca = (listagem: any = this.todasCategorias) => {
+    if (this.barraBusca && this.barraBusca.textoBusca.length > 0) {
+      return listagem.filter(c => c.nome.toLowerCase().includes(this.barraBusca.textoBusca.toLowerCase()))
     }
-   
-   
+    return listagem
+
+
   }
 
   listaCategoriasPaginacao = (listagem: any) => {
-    try{
-      if (this.barraPaginacao.qtdePaginas > 1 && listagem.length > 0) {
-        let pagina = this.barraPaginacao.paginaAtiva
-        let listagemFiltrada = listagem.filter((el, i) => {
-          let inicioEm = (pagina - 1) * this.itensPorPagina
-          let finalEm = pagina * this.itensPorPagina - 1
-          if ((i >= inicioEm) && (i <= finalEm)) {
-            return true
-          }
-          return false
-        })
-        return listagemFiltrada
-      } 
-      return listagem
-    } catch(e) {
-      return listagem
+    if (this.qtdePaginas() > 1 && listagem.length > 0) {
+      let pagina = this.paginaAtiva
+      let listagemFiltrada = listagem.filter((el, i) => {
+        let inicioEm = (pagina - 1) * this.itensPorPagina
+        let finalEm = pagina * this.itensPorPagina - 1
+        if ((i >= inicioEm) && (i <= finalEm)) {
+          return true
+        }
+        return false
+      })
+      return listagemFiltrada
     }
-    
-   
+    return listagem
   }
 
   composicao = (...fncs) => listagem => fncs.reduce((l, f) => f(l), listagem)
 
-
   @Output() listaCategorias = () => {
     let cats = this.composicao(this.listaCategoriasFiltroBusca, this.listaCategoriasPaginacao)(this.todasCategorias)
-    this.barraPaginacao.reset()
-    this.barraPaginacao.qtdePaginas = Math.ceil(cats.length / this.itensPorPagina)
     return cats
   }
 

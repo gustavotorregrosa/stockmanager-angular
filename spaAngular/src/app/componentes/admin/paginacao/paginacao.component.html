@@ -1,5 +1,5 @@
 <div>
-    <ul class="pagination">
+    <ul *ngIf="exibeBarra()" class="pagination">
         <li><a (click)="decrementaPagina($event)" href="#!"><i class="material-icons">chevron_left</i></a></li>
         <li *ngFor="let p of paginas()" (click)="selecionaPagina(p.pagina, $event)" class="{{p.classe}}"><a href="#!">{{p.pagina}}</a></li>
         <li><a (click)="incrementaPagina($event)" href="#!"><i class="material-icons">chevron_right</i></a></li>

@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Inject } from '@angular/core';
+import {PainelComponent} from '../categorias/painel/painel.component'
 
 @Component({
   selector: 'app-paginacao',
@@ -7,52 +8,46 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class PaginacaoComponent implements OnInit {
 
-  constructor() { }
+  constructor(@Inject(PainelComponent) private parent: PainelComponent) { }
 
-  public qtdePaginas: number
-  public paginaAtiva: number = 1
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
 
+  }
 
   selecionaPagina = (p, e: Event) => {
     e.preventDefault()
-    this.paginaAtiva = p
+    this.parent.paginaAtiva = p
   }
 
-  reset = () => {
-    this.paginaAtiva = 1
-    this.qtdePaginas = 1
-  }
+  exibeBarra = () => this.parent.qtdePaginas() > 1
+  
+  habilitaPrimeiro = () => this.parent.paginaAtiva > 1 
 
-  exibeBarra = () => this.qtdePaginas > 1
-
-  habilitaPrimeiro = () => this.paginaAtiva > 1 
-
-  habilitaUltimo = () => this.paginaAtiva < this.qtdePaginas
+  habilitaUltimo = () => this.parent.paginaAtiva < this.parent.qtdePaginas()
   
   decrementaPagina = (e: Event) => {
     e.preventDefault()
-    if(this.paginaAtiva <= 1){
+    if(this.parent.paginaAtiva <= 1){
       return false
     }
-    this.paginaAtiva--
+    this.parent.paginaAtiva--
   }
 
   incrementaPagina = (e: Event) => {
     e.preventDefault()
-    if(this.paginaAtiva >= this.qtdePaginas){
+    if(this.parent.paginaAtiva >= this.parent.qtdePaginas()){
       return false
     }
-    this.paginaAtiva++
+    this.parent.paginaAtiva++
   }
 
   paginas = () => {
     let paginasArray: Array<any> = []
 
-    for (let index = 1; index <= this.qtdePaginas; index++) {
+    for (let index = 1; index <= this.parent.qtdePaginas(); index++) {
         let classe = "waves-effect"
-        if(index == this.paginaAtiva){
+        if(index == this.parent.paginaAtiva){
           classe = "active"
         }
         paginasArray.push({
