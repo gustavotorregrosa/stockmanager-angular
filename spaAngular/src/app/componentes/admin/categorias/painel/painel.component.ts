@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, Output } from '@angular/core';
 import { BarraBuscaComponent as BarraBusca } from '../../barra-busca/barra-busca.component';
 import { PaginacaoComponent as Paginacao } from '../../paginacao/paginacao.component';
 import { AuxiliaresService } from '../../../../auxiliares.service';
+import {ModalEdicaoComponent as Edicao} from '../modal-edicao/modal-edicao.component';
 
 @Component({
   selector: 'app-categorias-painel',
@@ -10,8 +11,8 @@ import { AuxiliaresService } from '../../../../auxiliares.service';
 })
 export class PainelComponent implements OnInit {
   @ViewChild(BarraBusca) barraBusca: BarraBusca;
+  @ViewChild(Edicao) modalEdicao: Edicao;
 
-  // public qtdePaginas: number = 1
   public paginaAtiva: number = 1
 
   todasCategorias: any = []
@@ -28,7 +29,6 @@ export class PainelComponent implements OnInit {
       this.todasCategorias = categorias
       this.loader = false
       this.resetBarraPaginacao()
-      // this.qtdePaginas() = Math.ceil(categorias.length / this.itensPorPagina)
     })
   }
 
@@ -52,10 +52,6 @@ export class PainelComponent implements OnInit {
       this.getTodasCategorias()
     }, 2000)
 
-    // setInterval(() => {
-    //   console.log("quantidade pagina")
-    //   console.log( this.qtdePaginas)
-    // }, 1000)
   }
 
   listaCategoriasFiltroBusca = (listagem: any = this.todasCategorias) => {
@@ -63,8 +59,6 @@ export class PainelComponent implements OnInit {
       return listagem.filter(c => c.nome.toLowerCase().includes(this.barraBusca.textoBusca.toLowerCase()))
     }
     return listagem
-
-
   }
 
   listaCategoriasPaginacao = (listagem: any) => {
@@ -88,6 +82,11 @@ export class PainelComponent implements OnInit {
   @Output() listaCategorias = () => {
     let cats = this.composicao(this.listaCategoriasFiltroBusca, this.listaCategoriasPaginacao)(this.todasCategorias)
     return cats
+  }
+
+
+  abreModalEditaCategoria = categoria => {
+    this.modalEdicao.abreModal(categoria)
   }
 
 }

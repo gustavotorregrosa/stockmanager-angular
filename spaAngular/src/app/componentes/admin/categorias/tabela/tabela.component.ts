@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Inject } from '@angular/core';
+import {PainelComponent} from '../painel/painel.component';
 
 @Component({
   selector: 'app-tabela-categoria',
@@ -10,12 +11,19 @@ export class TabelaComponent implements OnInit {
   @Input() listaCategorias: any
 
 
-  constructor() { }
+  constructor(@Inject(PainelComponent) private parent: PainelComponent) { }
 
   ngOnInit(): void {
     // setTimeout(() => {
     //   console.log(this.listaCategorias)
     // }, 2000)
   }
+  
 
+  editaCategoria = (e: Event, categoria) => {
+    e.preventDefault()
+    // console.log("editando categoria")
+    // console.log(categoria)
+    this.parent.abreModalEditaCategoria(categoria)
+  }
 }

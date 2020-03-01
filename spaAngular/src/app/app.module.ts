@@ -19,6 +19,7 @@ import { ModalRegistroComponent } from './componentes/guest/modal-registro/modal
 import { BarraBuscaComponent } from './componentes/admin/barra-busca/barra-busca.component';
 import { PaginacaoComponent } from './componentes/admin/paginacao/paginacao.component';
 import { TabelaComponent } from './componentes/admin/categorias/tabela/tabela.component';
+import { ModalEdicaoComponent } from './componentes/admin/categorias/modal-edicao/modal-edicao.component';
 
 
 
@@ -38,6 +39,7 @@ import { TabelaComponent } from './componentes/admin/categorias/tabela/tabela.co
     BarraBuscaComponent,
     PaginacaoComponent,
     TabelaComponent,
+    ModalEdicaoComponent,
   ],
   imports: [
     BrowserModule,
