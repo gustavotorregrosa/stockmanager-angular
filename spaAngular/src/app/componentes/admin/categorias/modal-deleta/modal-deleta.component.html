@@ -6,8 +6,7 @@
             </div>
         </div>
         <div class="modal-footer">
-            <a href="#" class="waves-effect waves-green btn-flat">Deletar</a>
-            
+            <a href="#" (click)="deletar($event)" class="waves-effect waves-green btn-flat">Deletar</a>
         </div>
         <div *ngIf="loader" class="progress">
             <div class="indeterminate"></div>

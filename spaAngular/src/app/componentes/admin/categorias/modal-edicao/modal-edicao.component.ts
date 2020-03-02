@@ -12,8 +12,6 @@ import {PainelComponent} from '../painel/painel.component'
 export class ModalEdicaoComponent implements OnInit {
 
   loader: boolean = false
-  // categoria: any
-
   elem: any = null
   instance: any = null
   @Input() id: number = 0

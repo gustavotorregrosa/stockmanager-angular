@@ -26,4 +26,12 @@ export class TabelaComponent implements OnInit {
     // console.log(categoria)
     this.parent.abreModalEditaCategoria(categoria)
   }
+
+
+  deletaCategoria = (e: Event, categoria) => {
+    e.preventDefault()
+    // console.log("editando categoria")
+    // console.log(categoria)
+    this.parent.abreModalDeletaCategoria(categoria)
+  }
 }

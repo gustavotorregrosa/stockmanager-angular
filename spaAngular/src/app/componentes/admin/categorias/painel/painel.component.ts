@@ -3,6 +3,7 @@ import { BarraBuscaComponent as BarraBusca } from '../../barra-busca/barra-busca
 import { PaginacaoComponent as Paginacao } from '../../paginacao/paginacao.component';
 import { AuxiliaresService } from '../../../../auxiliares.service';
 import {ModalEdicaoComponent as Edicao} from '../modal-edicao/modal-edicao.component';
+import { ModalDeletaComponent as Delecao} from '../modal-deleta/modal-deleta.component';
 
 @Component({
   selector: 'app-categorias-painel',
@@ -12,6 +13,7 @@ import {ModalEdicaoComponent as Edicao} from '../modal-edicao/modal-edicao.compo
 export class PainelComponent implements OnInit {
   @ViewChild(BarraBusca) barraBusca: BarraBusca;
   @ViewChild(Edicao) modalEdicao: Edicao;
+  @ViewChild(Delecao) modalDelecao: Delecao;
 
   public paginaAtiva: number = 1
 
@@ -88,5 +90,11 @@ export class PainelComponent implements OnInit {
   abreModalEditaCategoria = categoria => {
     this.modalEdicao.abreModal(categoria)
   }
+
+  abreModalDeletaCategoria = categoria => {
+    this.modalDelecao.abreModal(categoria)
+  }
+
+
 
 }
