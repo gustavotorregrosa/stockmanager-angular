@@ -20,6 +20,7 @@ import { BarraBuscaComponent } from './componentes/admin/barra-busca/barra-busca
 import { PaginacaoComponent } from './componentes/admin/paginacao/paginacao.component';
 import { TabelaComponent } from './componentes/admin/categorias/tabela/tabela.component';
 import { ModalEdicaoComponent } from './componentes/admin/categorias/modal-edicao/modal-edicao.component';
+import { ModalDeletaComponent } from './componentes/admin/categorias/modal-deleta/modal-deleta.component';
 
 
 
@@ -40,6 +41,7 @@ import { ModalEdicaoComponent } from './componentes/admin/categorias/modal-edica
     PaginacaoComponent,
     TabelaComponent,
     ModalEdicaoComponent,
+    ModalDeletaComponent,
   ],
   imports: [
     BrowserModule,
