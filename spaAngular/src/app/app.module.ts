@@ -22,7 +22,7 @@ import { TabelaComponent } from './componentes/admin/categorias/tabela/tabela.co
 import { ModalEdicaoComponent } from './componentes/admin/categorias/modal-edicao/modal-edicao.component';
 import { ModalDeletaComponent } from './componentes/admin/categorias/modal-deleta/modal-deleta.component';
 import { ModalCriacaoComponent } from './componentes/admin/categorias/modal-criacao/modal-criacao.component';
-
+import { PainelComponent as PainelProdutos } from './componentes/admin/produtos/painel/painel.component';
 
 
 @NgModule({
@@ -31,6 +31,7 @@ import { ModalCriacaoComponent } from './componentes/admin/categorias/modal-cria
     TelaInicialComponent,
     TelaInicialAdminComponent,
     PainelCategorias,
+    PainelProdutos,
     BarraNavInicialComponent,
     SplashScreenComponent,
     ModalLoginComponent,
