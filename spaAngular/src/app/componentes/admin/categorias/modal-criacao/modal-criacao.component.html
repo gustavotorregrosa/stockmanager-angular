@@ -1,0 +1,18 @@
+<div>
+    <div id="modal-nova-categoria" class="modal">
+        <div class="modal-content">
+            <div class="input-field col s6">
+                <input [(ngModel)]="nome" id="nova-categoria" type="text" class="validate" />
+                <label for="nova-categoria">Nova Categoria</label>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a (click)="salvar($event)" href="#" class="waves-effect waves-green btn-flat">Salvar</a>
+            
+        </div>
+        <div *ngIf="loader" class="progress">
+            <div class="indeterminate"></div>
+        </div>
+
+    </div>
+</div>

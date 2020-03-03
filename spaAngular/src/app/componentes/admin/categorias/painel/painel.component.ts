@@ -4,6 +4,8 @@ import { PaginacaoComponent as Paginacao } from '../../paginacao/paginacao.compo
 import { AuxiliaresService } from '../../../../auxiliares.service';
 import {ModalEdicaoComponent as Edicao} from '../modal-edicao/modal-edicao.component';
 import { ModalDeletaComponent as Delecao} from '../modal-deleta/modal-deleta.component';
+import { ModalCriacaoComponent as Criacao } from '../modal-criacao/modal-criacao.component';
+
 
 @Component({
   selector: 'app-categorias-painel',
@@ -14,6 +16,7 @@ export class PainelComponent implements OnInit {
   @ViewChild(BarraBusca) barraBusca: BarraBusca;
   @ViewChild(Edicao) modalEdicao: Edicao;
   @ViewChild(Delecao) modalDelecao: Delecao;
+  @ViewChild(Criacao) modalCriacao: Criacao;
 
   public paginaAtiva: number = 1
 
@@ -45,7 +48,6 @@ export class PainelComponent implements OnInit {
   }
 
   resetBarraPaginacao = () => {
-    // this.qtdePaginas = 1
     this.paginaAtiva = 1
   }
 
@@ -93,6 +95,11 @@ export class PainelComponent implements OnInit {
 
   abreModalDeletaCategoria = categoria => {
     this.modalDelecao.abreModal(categoria)
+  }
+
+  abreModalCriaCategoria = (e: Event) => {
+    e.preventDefault()
+    this.modalCriacao.abreModal()
   }
 
 

@@ -11,7 +11,7 @@
                 <app-barra-busca></app-barra-busca>
             </div>
             <div class="col s1">
-                <a style="margin-top: 1em;" class="btn-floating btn-large waves-effect waves-light red">
+                <a (click)="abreModalCriaCategoria($event)" style="margin-top: 1em;" class="btn-floating btn-large waves-effect waves-light red">
                     <i class="material-icons">add</i>
                 </a>
             </div>
@@ -36,6 +36,7 @@
 
     <app-modal-edicao-categoria></app-modal-edicao-categoria>
     <app-modal-deleta-categoria></app-modal-deleta-categoria>
+    <app-modal-criacao-categoria></app-modal-criacao-categoria>
     
 
 

@@ -21,6 +21,7 @@ import { PaginacaoComponent } from './componentes/admin/paginacao/paginacao.comp
 import { TabelaComponent } from './componentes/admin/categorias/tabela/tabela.component';
 import { ModalEdicaoComponent } from './componentes/admin/categorias/modal-edicao/modal-edicao.component';
 import { ModalDeletaComponent } from './componentes/admin/categorias/modal-deleta/modal-deleta.component';
+import { ModalCriacaoComponent } from './componentes/admin/categorias/modal-criacao/modal-criacao.component';
 
 
 
@@ -42,6 +43,7 @@ import { ModalDeletaComponent } from './componentes/admin/categorias/modal-delet
     TabelaComponent,
     ModalEdicaoComponent,
     ModalDeletaComponent,
+    ModalCriacaoComponent,
   ],
   imports: [
     BrowserModule,
