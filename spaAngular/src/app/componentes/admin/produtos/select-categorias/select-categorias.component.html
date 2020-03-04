@@ -1,0 +1,11 @@
+<div>
+    <div class="input-field col s12">
+        <select #selectCategorias>
+            <option value="0" selected>Todas</option>
+            <option value={{c.id}} *ngFor="let c of listaCategorias">{{c.nome}}</option>
+        </select>
+        <label>Categorias</label>
+
+    </div>
+</div>
+
