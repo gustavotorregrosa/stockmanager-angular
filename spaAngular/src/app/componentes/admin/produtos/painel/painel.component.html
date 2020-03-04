@@ -30,6 +30,8 @@
         <br><br>
 
         <div class="row">
+            <div *ngIf="loader" class="progress"><div class="indeterminate"></div></div>
+            <app-tabela-produto *ngIf="!loader" [listaProdutos]="listaProdutos()"></app-tabela-produto>
             
         </div>
 

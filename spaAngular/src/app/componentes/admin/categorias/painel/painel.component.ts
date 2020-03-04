@@ -38,13 +38,11 @@ export class PainelComponent implements OnInit {
   }
 
   qtdePaginas = () => {
-
     let numCat = this.listaCategoriasFiltroBusca().length
     if(numCat){
       return Math.ceil(numCat / this.itensPorPagina)
     }
     return 1
-
   }
 
   resetBarraPaginacao = () => {

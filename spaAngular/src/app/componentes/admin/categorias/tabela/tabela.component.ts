@@ -6,7 +6,7 @@ import {PainelComponent} from '../painel/painel.component';
   templateUrl: './tabela.component.html',
   styleUrls: ['./tabela.component.css']
 })
-export class TabelaComponent implements OnInit {
+export class TabelaCategoriasComponent implements OnInit {
 
   @Input() listaCategorias: any
 

@@ -20,7 +20,8 @@ import { BarraBuscaComponent } from './componentes/admin/barra-busca/barra-busca
 // import { PaginacaoComponent } from './componentes/admin/paginacao/paginacao.component';
 import { PaginacaoProdutosComponent } from './componentes/admin/produtos/paginacao/paginacao.component';
 import { PaginacaoCategoriasComponent } from './componentes/admin/categorias/paginacao/paginacao.component';
-import { TabelaComponent } from './componentes/admin/categorias/tabela/tabela.component';
+import { TabelaCategoriasComponent } from './componentes/admin/categorias/tabela/tabela.component';
+import { TabelaProdutosComponent } from './componentes/admin/produtos/tabela/tabela.component';
 import { ModalEdicaoComponent } from './componentes/admin/categorias/modal-edicao/modal-edicao.component';
 import { ModalDeletaComponent } from './componentes/admin/categorias/modal-deleta/modal-deleta.component';
 import { ModalCriacaoComponent } from './componentes/admin/categorias/modal-criacao/modal-criacao.component';
@@ -45,8 +46,9 @@ import { SelectCategoriasComponent } from './componentes/admin/produtos/select-c
     BarraBuscaComponent,
     // PaginacaoComponent,
     PaginacaoProdutosComponent,
+    TabelaProdutosComponent,
     PaginacaoCategoriasComponent,
-    TabelaComponent,
+    TabelaCategoriasComponent,
     ModalEdicaoComponent,
     ModalDeletaComponent,
     ModalCriacaoComponent,
