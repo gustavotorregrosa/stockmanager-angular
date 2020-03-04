@@ -17,7 +17,9 @@ import { BarraNavegacaoAdminComponent } from './componentes/admin/barra-navegaca
 import { ModalLogoutComponent } from './componentes/admin/modal-logout/modal-logout.component';
 import { ModalRegistroComponent } from './componentes/guest/modal-registro/modal-registro.component';
 import { BarraBuscaComponent } from './componentes/admin/barra-busca/barra-busca.component';
-import { PaginacaoComponent } from './componentes/admin/paginacao/paginacao.component';
+// import { PaginacaoComponent } from './componentes/admin/paginacao/paginacao.component';
+import { PaginacaoProdutosComponent } from './componentes/admin/produtos/paginacao/paginacao.component';
+import { PaginacaoCategoriasComponent } from './componentes/admin/categorias/paginacao/paginacao.component';
 import { TabelaComponent } from './componentes/admin/categorias/tabela/tabela.component';
 import { ModalEdicaoComponent } from './componentes/admin/categorias/modal-edicao/modal-edicao.component';
 import { ModalDeletaComponent } from './componentes/admin/categorias/modal-deleta/modal-deleta.component';
@@ -40,7 +42,9 @@ import { PainelComponent as PainelProdutos } from './componentes/admin/produtos/
     ModalLogoutComponent,
     ModalRegistroComponent,
     BarraBuscaComponent,
-    PaginacaoComponent,
+    // PaginacaoComponent,
+    PaginacaoProdutosComponent,
+    PaginacaoCategoriasComponent,
     TabelaComponent,
     ModalEdicaoComponent,
     ModalDeletaComponent,

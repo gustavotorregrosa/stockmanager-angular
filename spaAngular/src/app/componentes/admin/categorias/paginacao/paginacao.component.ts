@@ -1,12 +1,12 @@
 import { Component, OnInit, Input, Inject } from '@angular/core';
-import {PainelComponent} from '../categorias/painel/painel.component'
+import { PainelComponent } from '../painel/painel.component';
 
 @Component({
-  selector: 'app-paginacao',
+  selector: 'app-paginacao-categorias',
   templateUrl: './paginacao.component.html',
   styleUrls: ['./paginacao.component.css']
 })
-export class PaginacaoComponent implements OnInit {
+export class PaginacaoCategoriasComponent implements OnInit {
 
   constructor(@Inject(PainelComponent) private parent: PainelComponent) { }
 

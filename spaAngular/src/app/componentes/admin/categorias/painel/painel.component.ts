@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild, Output } from '@angular/core';
 import { BarraBuscaComponent as BarraBusca } from '../../barra-busca/barra-busca.component';
-import { PaginacaoComponent as Paginacao } from '../../paginacao/paginacao.component';
+import { PaginacaoCategoriasComponent as Paginacao } from '../paginacao/paginacao.component';
 import { AuxiliaresService } from '../../../../auxiliares.service';
-import {ModalEdicaoComponent as Edicao} from '../modal-edicao/modal-edicao.component';
+import { ModalEdicaoComponent as Edicao } from '../modal-edicao/modal-edicao.component';
 import { ModalDeletaComponent as Delecao} from '../modal-deleta/modal-deleta.component';
 import { ModalCriacaoComponent as Criacao } from '../modal-criacao/modal-criacao.component';
 
