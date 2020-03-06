@@ -15,7 +15,7 @@ export class AuxiliaresService {
   @Input() autenticacao: Observable<Usuario>
   public usuario: Usuario
 
-  urlBackend:string = 'http://stockmanager-angular.test/api/';
+  urlBackend:string = 'http://stockmanager-backend.local/api/';
 
 
 
@@ -30,6 +30,21 @@ getJwt = () => {
   const jwt = this.usuario.jwt
   return jwt
 }
+
+converteBase64 = arquivo => new Promise((success) => {
+  const reader = new FileReader()
+  reader.readAsDataURL(arquivo)
+  reader.onload = () => success(reader.result)
+})
+
+carregaImagem = (imagem, quadro) => {
+  let reader = new FileReader()
+  reader.onload = () => {
+      quadro.src = reader.result
+  }
+  reader.readAsDataURL(imagem)
+}
+
 
 // atualizaJwtUsuario = () => {
 //   return new Promise((success, reject) => {

@@ -3,7 +3,6 @@ import M from 'materialize-css';
 import { AuxiliaresService } from '../../../../auxiliares.service';
 import {PainelComponent} from '../painel/painel.component'
 
-
 @Component({
   selector: 'app-modal-criacao-categoria',
   templateUrl: './modal-criacao.component.html',

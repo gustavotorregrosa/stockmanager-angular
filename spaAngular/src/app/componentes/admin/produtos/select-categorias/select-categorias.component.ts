@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import M from 'materialize-css';
 
+
 @Component({
   selector: 'app-select-categorias',
   templateUrl: './select-categorias.component.html',
@@ -51,8 +52,8 @@ export class SelectCategoriasComponent implements OnInit, AfterViewInit {
     //   console.log("a lista interna eh")
     //   console.log(this.listaCategorias)
     // }, 1000)
+    
 
-  
 
   }
 

@@ -3,6 +3,7 @@ import { BarraBuscaComponent as BarraBusca } from '../../barra-busca/barra-busca
 import { PaginacaoProdutosComponent as Paginacao } from '../paginacao/paginacao.component';
 import { AuxiliaresService } from '../../../../auxiliares.service';
 import { SelectCategoriasComponent } from '../select-categorias/select-categorias.component';
+import { ModalCriaEditaProdutoComponent } from '../modal-cria-edita-produto/modal-cria-edita-produto.component';
 
 @Component({
   selector: 'app-painel-produtos',
@@ -13,6 +14,7 @@ export class PainelComponent implements OnInit {
 
   @ViewChild(BarraBusca) barraBusca: BarraBusca
   @ViewChild(SelectCategoriasComponent) selectCategorias: SelectCategoriasComponent
+  @ViewChild(ModalCriaEditaProdutoComponent) modalCriaEdita: ModalCriaEditaProdutoComponent
 
   public paginaAtiva: number = 1
   public todosProdutos: any = []
@@ -108,12 +110,18 @@ resetBarraPaginacao = () => {
 
 
 
-  getTodasCategorias = () => {
-    this.auxiliar.jwtFetch("categorias/listar").then((categorias: any) => {
-      this.listaCategorias = categorias
-      this.selectCategorias.atualizaExibicao()
-    })
-  }
+getTodasCategorias = () => {
+  this.auxiliar.jwtFetch("categorias/listar").then((categorias: any) => {
+    this.listaCategorias = categorias
+    this.selectCategorias.atualizaExibicao()
+  })
+}
+
+abreModalCriacao = (e: Event) => {
+  e.preventDefault()
+  this.modalCriaEdita.abreModal()
+  
+}
 
 
 
