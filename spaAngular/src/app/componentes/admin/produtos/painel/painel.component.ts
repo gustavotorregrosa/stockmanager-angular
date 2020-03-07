@@ -19,6 +19,7 @@ export class PainelComponent implements OnInit {
   public paginaAtiva: number = 1
   public todosProdutos: any = []
   public itensPorPagina: number = 5
+  public exibeOptTodosCat: boolean = true
 
   constructor(private auxiliar: AuxiliaresService) { }
 
@@ -42,6 +43,10 @@ export class PainelComponent implements OnInit {
         this.getTodosProdutos()
    
     }, 2000)
+
+    setTimeout(() => {
+      this.selectCategorias.atualizaExibicao(6)
+    }, 4000)
 
   }
 
@@ -122,6 +127,8 @@ abreModalCriacao = (e: Event) => {
   this.modalCriaEdita.abreModal()
   
 }
+
+
 
 
 

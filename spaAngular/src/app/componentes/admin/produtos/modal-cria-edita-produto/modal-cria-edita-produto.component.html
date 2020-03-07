@@ -1,45 +1,54 @@
 <div>
     <div id="modal-novo-produto" class="modal wide">
     <div class="modal-content">
-        <div class="row">
-            <div class="input-field col s6">
-                <input id="novo-produto" type="text"/>
-                <label for="novo-produto">Novo Produto</label>
-            </div>
-            <div class="col s6">
-                <app-select-categorias [listaCategorias]="listaCategorias" ></app-select-categorias>
-            </div>
-
-        </div>
-        <div class="row">
-            <div class="input-field col s6">
-                <i class="material-icons prefix">mode_edit</i>
-                <textarea style="min-height: 6em;"
-                    id="icon_prefix2" class="materialize-textarea"></textarea>
-                <label for="icon_prefix2">Descricao</label>
-            </div>
-            <div class="input-field file-field col s6">
-                <div class="col s6">
-                    <img style="max-height: 12em;" class="responsive-img" id="quadro-img" />
+        <form #meuForm>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input [(ngModel)]="nome" [ngModelOptions]="{standalone: true}" id="novo-produto" type="text"/>
+                    <label for="novo-produto">Novo Produto</label>
                 </div>
                 <div class="col s6">
-                    <div class="btn">
-                        <span>File</span>
-                        <input (change)="carregarArquivo($event)" #inputFile type="file" />
-                    </div>
-                    <div class="file-path-wrapper">
-                        <input class="file-path" type="text" placeholder="Upload one or more files" />
-                    </div>
-
+                    <app-select-categorias [exibeOptTodosCat]="exibeOptTodosCat" [listaCategorias]="listaCategorias" ></app-select-categorias>
                 </div>
 
             </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">mode_edit</i>
+                    <textarea [(ngModel)]="descricao" [ngModelOptions]="{standalone: true}" style="min-height: 6em;"
+                        id="icon_prefix2" class="materialize-textarea"></textarea>
+                    <label for="icon_prefix2">Descricao</label>
+                </div>
+                <div class="input-field file-field col s6">
+                    <div class="col s6">
+                        <img *ngIf="!loaderimagem" style="max-height: 12em;" class="responsive-img" id="quadro-img" />
+                        <div *ngIf="loaderimagem" class="preloader-wrapper big active">
+                            <div class="spinner-layer spinner-blue-only">
+                                <div class="circle-clipper left">
+                                    <div class="circle"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s6">
+                        <div class="btn">
+                            <span>File</span>
+                            <input (change)="carregarArquivo($event)" #inputFile type="file" />
+                        </div>
+                        <div class="file-path-wrapper">
+                            <input class="file-path" type="text" placeholder="Upload one or more files" />
+                        </div>
 
-        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </form>
     </div>
 
     <div class="modal-footer">
-        <a href="#" class="waves-effect waves-green btn-flat">Salvar</a>
+        <a (click)="salvar($event)" href="#" class="waves-effect waves-green btn-flat">Salvar</a>
     </div>
     <div class="row">
         <div *ngIf="loader" class="progress"><div class="indeterminate"></div></div>
