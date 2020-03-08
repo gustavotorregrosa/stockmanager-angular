@@ -32,28 +32,9 @@ export class PainelComponent implements OnInit {
 
   ngOnInit(): void {
     this.getTodasCategorias()
-    // setTimeout(() => {
-    //   this.listaCategorias.push({
-    //     id: 15,
-    //     nome: "gustavo"
-    //   })
-    //   this.selectCategorias.atualizaExibicao()
-    // }, 5000)
-    // setTimeout(() => {
-    //   this.loader = false
-    // }, 2500)
     setTimeout(() => {
-
       this.getTodosProdutos()
-
-    }, 2000)
-
-
-
-    // setTimeout(() => {
-    //   this.selectCategorias.atualizaExibicao(6)
-    // }, 4000)
-
+    }, 1000)
   }
 
 
@@ -62,8 +43,6 @@ export class PainelComponent implements OnInit {
       let listagemFiltrada = listagem.filter((el: any) => el.categoria == this.selectCategorias.categoriaSelecionada)
       return listagemFiltrada
     }
-
-
     return listagem
 
 
@@ -116,27 +95,12 @@ export class PainelComponent implements OnInit {
     return listagem
   }
 
-  // listaProdutosAntesPaginacao = (listagem: any = this.todosProdutos) => {
-  //   let listaBusca = this.listaProdutosFiltroBusca(listagem)
-  //   let listaPorCat = this.listaProdutosCategorias(listaBusca)
-  //   return listaPorCat
-  // }
-
-  // listaProdutos = () => this.todosProdutos
-
-
 
   getTodosProdutos = () => {
     this.auxiliar.jwtFetch("produtos/listar").then(produtos => {
       this.todosProdutos = produtos
       this.loader = false
       this.resetBarraPaginacao()
-
-      // if(produtos.length <= this.numItensPorPagina){
-      //     this.setState({
-      //         pagina: 1
-      //     })
-      // }
     })
   }
 

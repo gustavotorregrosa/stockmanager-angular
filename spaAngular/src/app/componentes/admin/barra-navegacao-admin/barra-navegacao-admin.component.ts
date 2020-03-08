@@ -20,9 +20,6 @@ export class BarraNavegacaoAdminComponent implements OnInit {
     this.elem = document.getElementById('minhasidenav')
     M.Sidenav.init(this.elem, {});
     this.instancia = M.Sidenav.getInstance(this.elem)
-    // setTimeout(() => {
-    //   this.instancia.open()
-    // }, 1500)
 
   }
 

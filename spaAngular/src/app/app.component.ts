@@ -23,7 +23,6 @@ export class AppComponent implements OnInit {
       this.usuario = { ...u }
       if (this.usuario.logado) {
         let arrayRotas = this.router.url.split("/")
-        console.log(arrayRotas)
         if(arrayRotas[1] != "admin"){
           this.router.navigateByUrl("/admin")
         }
@@ -48,25 +47,6 @@ export class AppComponent implements OnInit {
       this._registraUsuario(usuarioObj)
     }
 
-    // setTimeout(() => {
-    //   this._logout()
-    // }, 5000)
-
-    // setTimeout(() => {
-    //   // console.log(this.usuario)
-
-    //   let usuarioStorage: string = localStorage.getItem('usuario') ? localStorage.getItem('usuario') : null
-    //   if (usuarioStorage) {
-    //     let usuarioObj: Usuario = JSON.parse(usuarioStorage)
-    //     this._registraUsuario(usuarioObj)
-
-    //   }
-
-    // }, 4000)
-
-    // setTimeout(() => {
-    //   this.router.navigateByUrl("/admin")
-    // }, 3000)
   }
 
 }

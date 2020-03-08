@@ -13,25 +13,17 @@ export class TabelaCategoriasComponent implements OnInit {
 
   constructor(@Inject(PainelComponent) private parent: PainelComponent) { }
 
-  ngOnInit(): void {
-    // setTimeout(() => {
-    //   console.log(this.listaCategorias)
-    // }, 2000)
-  }
+  ngOnInit(): void {}
   
 
   editaCategoria = (e: Event, categoria) => {
     e.preventDefault()
-    // console.log("editando categoria")
-    // console.log(categoria)
     this.parent.abreModalEditaCategoria(categoria)
   }
 
 
   deletaCategoria = (e: Event, categoria) => {
     e.preventDefault()
-    // console.log("editando categoria")
-    // console.log(categoria)
     this.parent.abreModalDeletaCategoria(categoria)
   }
 }

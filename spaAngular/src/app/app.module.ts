@@ -17,7 +17,6 @@ import { BarraNavegacaoAdminComponent } from './componentes/admin/barra-navegaca
 import { ModalLogoutComponent } from './componentes/admin/modal-logout/modal-logout.component';
 import { ModalRegistroComponent } from './componentes/guest/modal-registro/modal-registro.component';
 import { BarraBuscaComponent } from './componentes/admin/barra-busca/barra-busca.component';
-// import { PaginacaoComponent } from './componentes/admin/paginacao/paginacao.component';
 import { PaginacaoProdutosComponent } from './componentes/admin/produtos/paginacao/paginacao.component';
 import { PaginacaoCategoriasComponent } from './componentes/admin/categorias/paginacao/paginacao.component';
 import { TabelaCategoriasComponent } from './componentes/admin/categorias/tabela/tabela.component';
@@ -45,7 +44,6 @@ import { ModalDeletaProdutoComponent } from './componentes/admin/produtos/modal-
     ModalLogoutComponent,
     ModalRegistroComponent,
     BarraBuscaComponent,
-    // PaginacaoComponent,
     PaginacaoProdutosComponent,
     TabelaProdutosComponent,
     PaginacaoCategoriasComponent,

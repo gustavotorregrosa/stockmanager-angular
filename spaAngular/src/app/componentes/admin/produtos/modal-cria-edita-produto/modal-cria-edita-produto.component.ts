@@ -50,14 +50,8 @@ export class ModalCriaEditaProdutoComponent implements OnInit, AfterViewInit {
 
   carregarArquivo = (e: any) => {
     let img = e.target.files[0]
-    // console.log(img)
-    // let img: File = new File([""], "/assets/sem-imagem.jpg")
-    // console.log(img)
     let nomeImagem = img.name
     let quadro: any = document.getElementById("quadro-img")
-    // setTimeout(() => {
-    //   quadro.src = "assets/sem-imagem.jpg"
-    // }, 3000)
     this.auxiliar.carregaImagem(img, quadro)
     this.auxiliar.converteBase64(img).then((imagem: any) => {
         imagem = imagem.split('base64,')[1]
