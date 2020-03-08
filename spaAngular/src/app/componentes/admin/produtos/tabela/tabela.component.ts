@@ -18,4 +18,15 @@ export class TabelaProdutosComponent implements OnInit {
     
   }
 
+  abreModalEditaProduto = (e: Event, produto: any) => {
+    e.preventDefault()
+    this.parent.abreModalEdicao(produto)
+  }
+
+  abreModalDeletaProduto = (e: Event, produto: any) => {
+    e.preventDefault()
+    this.parent.abreModalDelecao(produto)
+  }
+
+
 }

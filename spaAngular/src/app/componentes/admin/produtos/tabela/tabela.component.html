@@ -11,9 +11,9 @@
           <tr *ngFor="let p of listaProdutos">
             <td>{{p.nome}}</td>
             <td>
-              <a href="#"><i class="material-icons">edit</i></a>
+              <a (click)="abreModalEditaProduto($event, p)" href="#"><i class="material-icons">edit</i></a>
               &nbsp;&nbsp;&nbsp;
-              <a href="#"><i class="material-icons">delete</i></a>
+              <a href="#" (click)="abreModalDeletaProduto($event, p)"><i class="material-icons">delete</i></a>
             </td>
           </tr>
          

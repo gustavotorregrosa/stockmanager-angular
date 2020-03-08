@@ -4,6 +4,8 @@ import { PaginacaoProdutosComponent as Paginacao } from '../paginacao/paginacao.
 import { AuxiliaresService } from '../../../../auxiliares.service';
 import { SelectCategoriasComponent } from '../select-categorias/select-categorias.component';
 import { ModalCriaEditaProdutoComponent } from '../modal-cria-edita-produto/modal-cria-edita-produto.component';
+import { ModalDeletaProdutoComponent } from '../modal-deleta-produto/modal-deleta-produto.component';
+
 
 @Component({
   selector: 'app-painel-produtos',
@@ -15,6 +17,8 @@ export class PainelComponent implements OnInit {
   @ViewChild(BarraBusca) barraBusca: BarraBusca
   @ViewChild(SelectCategoriasComponent) selectCategorias: SelectCategoriasComponent
   @ViewChild(ModalCriaEditaProdutoComponent) modalCriaEdita: ModalCriaEditaProdutoComponent
+  @ViewChild(ModalDeletaProdutoComponent) modalDeleta: ModalDeletaProdutoComponent
+
 
   public paginaAtiva: number = 1
   public todosProdutos: any = []
@@ -39,14 +43,29 @@ export class PainelComponent implements OnInit {
     //   this.loader = false
     // }, 2500)
     setTimeout(() => {
-     
-        this.getTodosProdutos()
-   
+
+      this.getTodosProdutos()
+
     }, 2000)
 
-    setTimeout(() => {
-      this.selectCategorias.atualizaExibicao(6)
-    }, 4000)
+
+
+    // setTimeout(() => {
+    //   this.selectCategorias.atualizaExibicao(6)
+    // }, 4000)
+
+  }
+
+
+  listaProdutosCategorias = (listagem: any) => {
+    if (this.selectCategorias && this.selectCategorias.categoriaSelecionada > 0) {
+      let listagemFiltrada = listagem.filter((el: any) => el.categoria == this.selectCategorias.categoriaSelecionada)
+      return listagemFiltrada
+    }
+
+
+    return listagem
+
 
   }
 
@@ -70,14 +89,21 @@ export class PainelComponent implements OnInit {
   composicao = (...fncs) => listagem => fncs.reduce((l, f) => f(l), listagem)
 
   @Output() listaProdutos = () => {
-    let prods = this.composicao(this.listaProdutosFiltroBusca, this.listaProdutosPaginacao)(this.todosProdutos)
+    let prods = this.composicao(this.listaProdutosFiltroBusca, this.listaProdutosCategorias, this.listaProdutosPaginacao)(this.todosProdutos)
     return prods
   }
 
 
+  listaProdutosSemPag = () => {
+    let prods = this.composicao(this.listaProdutosFiltroBusca, this.listaProdutosCategorias)(this.todosProdutos)
+    return prods
+  }
+
+
+
   qtdePaginas = () => {
-    let numProds = this.listaProdutosFiltroBusca().length
-    if(numProds){
+    let numProds = this.listaProdutosSemPag().length
+    if (numProds) {
       return Math.ceil(numProds / this.itensPorPagina)
     }
     return 1
@@ -90,6 +116,12 @@ export class PainelComponent implements OnInit {
     return listagem
   }
 
+  // listaProdutosAntesPaginacao = (listagem: any = this.todosProdutos) => {
+  //   let listaBusca = this.listaProdutosFiltroBusca(listagem)
+  //   let listaPorCat = this.listaProdutosCategorias(listaBusca)
+  //   return listaPorCat
+  // }
+
   // listaProdutos = () => this.todosProdutos
 
 
@@ -100,37 +132,43 @@ export class PainelComponent implements OnInit {
       this.loader = false
       this.resetBarraPaginacao()
 
-        // if(produtos.length <= this.numItensPorPagina){
-        //     this.setState({
-        //         pagina: 1
-        //     })
-        // }
+      // if(produtos.length <= this.numItensPorPagina){
+      //     this.setState({
+      //         pagina: 1
+      //     })
+      // }
     })
-}
+  }
 
 
-resetBarraPaginacao = () => {
-  this.paginaAtiva = 1
-}
-
-
-
-getTodasCategorias = () => {
-  this.auxiliar.jwtFetch("categorias/listar").then((categorias: any) => {
-    this.listaCategorias = categorias
-    this.selectCategorias.atualizaExibicao()
-  })
-}
-
-abreModalCriacao = (e: Event) => {
-  e.preventDefault()
-  this.modalCriaEdita.abreModal()
-  
-}
+  resetBarraPaginacao = () => {
+    this.paginaAtiva = 1
+  }
 
 
 
+  getTodasCategorias = () => {
+    this.auxiliar.jwtFetch("categorias/listar").then((categorias: any) => {
+      this.listaCategorias = categorias
+      this.selectCategorias.atualizaExibicao()
+    })
+  }
+
+  abreModalCriacao = (e: Event) => {
+    e.preventDefault()
+    this.modalCriaEdita.abreModal()
+
+  }
+
+  abreModalEdicao = (produto: any) => {
+    this.modalCriaEdita.abreModal(produto)
+
+  }
 
 
+  abreModalDelecao = (produto: any) => {
+    this.modalDeleta.abreModal(produto)
+
+  }
 
 }

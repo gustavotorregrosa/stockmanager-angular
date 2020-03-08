@@ -71,9 +71,10 @@ export class ModalCriaEditaProdutoComponent implements OnInit, AfterViewInit {
       this.idProduto = produto.id
       this.nome = produto.nome
       this.descricao = produto.descricao
-      if(produto.nomeImagem){
-        this.nomeImagem = produto.nomeImagem
-        //carrega imagem
+      this.selectCategorias.atualizaExibicao(produto.categoria)
+      if(produto.id){
+        this.nomeImagem = produto.imagem
+        this.exibeImagem()
       }
 
     }
@@ -84,14 +85,48 @@ export class ModalCriaEditaProdutoComponent implements OnInit, AfterViewInit {
     }, 100)
   }
 
+  getExtensaoMime = str => {
+    let extensao = str.split('.')[1]
+    if (extensao == "jpg") {
+        extensao = "jpeg"
+    }
+    return extensao
+}
+
+
+  exibeImagem = () => {
+    let quadro: any
+    if(this.nomeImagem) {
+        this.loaderimagem = true
+        this.auxiliar.jwtFetch("produtos/imagem/" + this.nomeImagem).then((r: any) => {
+            let extensao = this.getExtensaoMime(this.nomeImagem)
+            const imagem = "data:image/" + extensao + ";base64," + r.imagem64
+            this.loaderimagem = false
+            setTimeout(() => {
+              quadro = document.getElementById("quadro-img")
+              quadro.src = imagem
+            }, 50)
+       
+        })
+    } else {
+      quadro = document.getElementById("quadro-img")
+      quadro.src = "assets/sem-imagem.jpg"
+    }
+
+}
+
   salvar = (e: Event) => {
     e.preventDefault()
-    // console.log(this.idProduto)
-    // console.log(this.nome)
-    // console.log(this.descricao)
-    // console.log(this.imagem)
-    // console.log(this.nomeImagem)
-    // console.log(this.nFileInput)
+
+    if(!this.nome){
+      M.toast({ html: 'Escolha um nome para o produto'})
+      return false
+    }
+
+    if(!this.selectCategorias.categoriaSelecionada){
+      M.toast({ html: 'Pelo menos uma categoria deve ser escolhida'})
+      return false
+    }
 
     this.loader = true
 
@@ -102,33 +137,28 @@ export class ModalCriaEditaProdutoComponent implements OnInit, AfterViewInit {
       nome: this.nome,
       categoria: this.selectCategorias.categoriaSelecionada,
       descricao: this.descricao
+    }   
+
+    let myHeaders = new Headers
+    myHeaders.set("Content-Type", "application/json")
+    let opcoes = {
+        url: 'produtos/salvar',
+        method: 'post',
+        body: JSON.stringify(produto),
+        headers: myHeaders
     }
-
-    console.log(produto)
-
-    // let myHeaders = new Headers
-    // myHeaders.set("Content-Type", "application/json")
-    // let opcoes = {
-    //     url: 'produtos/salvar',
-    //     method: 'post',
-    //     body: JSON.stringify({
-    //         ...this.state
-    //     }),
-    //     headers: myHeaders
-    // }
-    // setTimeout(() => {
-    //     jwtFetch(opcoes.url, opcoes).then(r => {
-    //         M.toast({ html: r.mensagem })
-    //         this.props.listarProdutos()
-    //         this.fechaModal()
-    //     }).catch(r => {
-    //         M.toast({ html: r.conteudo.mensagem })
-    //         this.fechaModal()
-    //     })
-    // }, 1000);
+    setTimeout(() => {
+        this.auxiliar.jwtFetch(opcoes.url, opcoes).then((r: any) => {
+            M.toast({ html: r.mensagem })
+            this.parent.getTodosProdutos()
+            this.fechaModal()
+        }).catch(r => {
+            M.toast({ html: r.conteudo.mensagem })
+            this.fechaModal()
+        })
+    }, 1000);
 
   }
-
 
 
   fechaModal = () => {
@@ -144,8 +174,6 @@ export class ModalCriaEditaProdutoComponent implements OnInit, AfterViewInit {
     const quadro: any = document.getElementById("quadro-img")
     quadro.src = ""
     this.nForm.reset()
-  
-
   }
 
 }

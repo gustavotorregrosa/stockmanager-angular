@@ -28,6 +28,7 @@ import { ModalCriacaoComponent } from './componentes/admin/categorias/modal-cria
 import { PainelComponent as PainelProdutos } from './componentes/admin/produtos/painel/painel.component';
 import { SelectCategoriasComponent } from './componentes/admin/produtos/select-categorias/select-categorias.component';
 import { ModalCriaEditaProdutoComponent } from './componentes/admin/produtos/modal-cria-edita-produto/modal-cria-edita-produto.component';
+import { ModalDeletaProdutoComponent } from './componentes/admin/produtos/modal-deleta-produto/modal-deleta-produto.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { ModalCriaEditaProdutoComponent } from './componentes/admin/produtos/mod
     ModalDeletaComponent,
     ModalCriacaoComponent,
     SelectCategoriasComponent,
-    ModalCriaEditaProdutoComponent
+    ModalCriaEditaProdutoComponent,
+    ModalDeletaProdutoComponent
   ],
   imports: [
     BrowserModule,
