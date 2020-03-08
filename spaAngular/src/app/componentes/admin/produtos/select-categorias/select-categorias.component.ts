@@ -24,11 +24,11 @@ export class SelectCategoriasComponent implements OnInit, AfterViewInit {
   }
 
   atualizaExibicao = (n: number = null) => {
-    this.categoriaSelecionada = n
     setTimeout(() => {
       this.instance.destroy()
       if(n){
-        this.nElement.value = n   
+        this.nElement.value = n 
+        this.categoriaSelecionada = n  
       }
       this.instance = M.FormSelect.init(this.nElement, {})
     },50)

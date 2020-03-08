@@ -15,7 +15,7 @@ export class AuxiliaresService {
   @Input() autenticacao: Observable<Usuario>
   public usuario: Usuario
 
-  urlBackend: string = 'http://stockmanager-backend.local/api/';
+  urlBackend: string = 'https://stockmanager-backend.gustavotorregrosa.com/api/';
 
 
 
